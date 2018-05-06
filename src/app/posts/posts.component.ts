@@ -1,7 +1,9 @@
 import {
   Component,
+  EventEmitter,
   ViewChild,
-  Input
+  Input,
+  Output
 } from '@angular/core';
 
 // Angular Material
@@ -13,6 +15,7 @@ import {
 
 // Models
 import { IPost } from './../models/post';
+import { IComment } from '../models/comment';
 
 @Component({
   selector: 'app-posts',
@@ -21,12 +24,14 @@ import { IPost } from './../models/post';
 })
 export class PostsComponent {
 
-  displayedColumns = ['userId', 'id', 'title', 'body'];
+  displayedColumns = ['userId', 'id', 'title', 'body', 'viewComments'];
   dataSource: MatTableDataSource<IPost>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   @Input() posts: Array<IPost>;
+  @Input() comments: Array<IComment>;
+  @Output() getComments: EventEmitter<string> = new EventEmitter<string>();
 
   selectedRowIndex: number = -1;
 
@@ -40,8 +45,10 @@ export class PostsComponent {
 
   }
 
-  highlight ( row ) {
-      this.selectedRowIndex = row.id;
+  getCommentsByPostId ( postId: string ) {
+
+    this.getComments.emit(postId);
+
   }
 
    // tslint:disable-next-line:use-life-cycle-interface

@@ -2,9 +2,11 @@
   <mat-tab label="Posts">
 
     <div *ngIf="_posts">
-      <app-posts [posts]='_posts'></app-posts>
+      <app-posts [posts]='_posts'
+                 [comments]='_comments'
+                 (getComments)='getCommentByPost($event)'>
+      </app-posts>
     </div>
-
 
   </mat-tab>
 </mat-tab-group>

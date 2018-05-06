@@ -5,6 +5,7 @@ import { IPost } from './models/post';
 
 // Services
 import { ApiService } from './api.service';
+import { IComment } from './models/comment';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { ApiService } from './api.service';
 export class AppComponent {
 
   _posts: Array<IPost>;
+  _comments: Array<IComment>;
 
   constructor (
     private _apiService: ApiService
@@ -28,6 +30,15 @@ export class AppComponent {
     this._apiService.getPosts$()
          .subscribe( data => {
            this._posts = data;
+         });
+
+  }
+
+  getCommentByPost ( postId: string ) {
+
+    this._apiService.getCommentsByPost$( postId )
+         .subscribe( data => {
+           this._comments = data;
          });
 
   }
