@@ -1,6 +1,7 @@
 
 // Components
 import { AppComponent } from './app.component';
+import { DialogCommentsComponent } from './posts/dialog-comments/dialog-comments.component';
 import { PostsComponent } from './posts/posts.component';
 
 // Modules
@@ -16,7 +17,8 @@ import { ApiService } from './api.service';
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    PostsComponent,
+    DialogCommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { ApiService } from './api.service';
     MaterialModule
   ],
   providers: [ ApiService ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  entryComponents: [ DialogCommentsComponent ]
 })
 export class AppModule { }

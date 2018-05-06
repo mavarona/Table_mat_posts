@@ -4,15 +4,21 @@ import {
   ViewChild,
   Input,
   Output,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 // Angular Material
 import {
-  MatTableDataSource,
+  MatDialog,
+  MatDialogConfig,
+  MatPaginator,
   MatSort,
-  MatPaginator
+  MatTableDataSource
 } from '@angular/material';
+
+// Components
+import { DialogCommentsComponent } from './dialog-comments/dialog-comments.component';
 
 // Models
 import { IPost } from './../models/post';
@@ -21,7 +27,8 @@ import { IComment } from '../models/comment';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostsComponent {
 
@@ -34,9 +41,12 @@ export class PostsComponent {
   @Input() comments: Array<IComment>;
   @Output() getComments: EventEmitter<string> = new EventEmitter<string>();
 
+  // tslint:disable-next-line:no-inferrable-types
   selectedRowIndex: number = -1;
 
-  constructor() { }
+  constructor(
+    private _dialog: MatDialog,
+  ) { }
 
   applyFilter ( filterValue: string ) {
 
@@ -49,6 +59,16 @@ export class PostsComponent {
   getCommentsByPostId ( postId: string ) {
 
     this.getComments.emit(postId);
+
+  }
+
+  // tslint:disable-next-line:member-ordering
+  private static dialogConfig(data): MatDialogConfig {
+
+    const config: MatDialogConfig = new MatDialogConfig;
+    config.width = '700px';
+    config.data = data;
+    return config;
 
   }
 
@@ -65,7 +85,9 @@ export class PostsComponent {
    ngOnChanges(changes: SimpleChanges): void {
 
     if ( this.comments ) {
-      console.log('yes');
+
+      setTimeout(() => this._dialog.open(DialogCommentsComponent, PostsComponent.dialogConfig(this.comments)));
+
     }
 
    }

@@ -1,0 +1,12 @@
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  min-width: auto;
+  overflow: auto;
+  justify-content: space-between;
+}
+
+.my-mat-cell,
+.my-mat-header-cell {
+  flex: 5% 25% 20% 50%;
+}
