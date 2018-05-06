@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 // Material
 import {
   MatButtonModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
   MatPaginatorModule,
@@ -17,6 +18,7 @@ import {
   imports: [
     CommonModule,
     MatButtonModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
@@ -27,6 +29,7 @@ import {
   ],
   exports: [
     MatButtonModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,

@@ -3,7 +3,8 @@ import {
   EventEmitter,
   ViewChild,
   Input,
-  Output
+  Output,
+  SimpleChanges
 } from '@angular/core';
 
 // Angular Material
@@ -57,6 +58,15 @@ export class PostsComponent {
     this.dataSource = new MatTableDataSource<IPost>(this.posts);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+
+   }
+
+   // tslint:disable-next-line:use-life-cycle-interface
+   ngOnChanges(changes: SimpleChanges): void {
+
+    if ( this.comments ) {
+      console.log('yes');
+    }
 
    }
 
