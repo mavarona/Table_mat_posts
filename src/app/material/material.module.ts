@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Material
-import { MatPaginatorModule,
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSortModule,
   MatTableModule,
@@ -12,6 +15,8 @@ import { MatPaginatorModule,
 @NgModule({
   imports: [
     CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
@@ -19,6 +24,8 @@ import { MatPaginatorModule,
     MatTabsModule
   ],
   exports: [
+    MatFormFieldModule,
+    MatInputModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
