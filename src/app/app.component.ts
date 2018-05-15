@@ -28,8 +28,8 @@ export class AppComponent {
   getPosts() {
 
     this._apiService.getPosts$()
-         .subscribe( data => {
-           this._posts = data;
+         .subscribe( posts => {
+           this._posts = posts;
          });
 
   }
@@ -37,8 +37,8 @@ export class AppComponent {
   getCommentByPost ( postId: string ) {
 
     this._apiService.getCommentsByPost$( postId )
-         .subscribe( data => {
-           this._comments = data;
+         .subscribe( comments => {
+           this._comments = comments;
          });
 
   }
