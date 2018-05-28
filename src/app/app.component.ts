@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 // Models
+import { IComment } from './models/comment';
 import { IPost } from './models/post';
 
 // Services
 import { ApiService } from './api.service';
-import { IComment } from './models/comment';
 
 @Component({
   selector: 'app-root',
